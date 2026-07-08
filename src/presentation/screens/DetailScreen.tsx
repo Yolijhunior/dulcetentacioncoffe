@@ -8,7 +8,7 @@ import { validateOrderForm } from '../../shared/validations';
 
 export const DetailScreen = () => {
   const { state, dispatch } = useContext(AppContext);
-  const order = state.orders.find(o => o.id === state.selectedOrderId);
+  const order = state.orders.find(o => o.id === state.selectedOrderId) || (state as any)._currentOrderBackup;
 
   if (!order) {
     return (
@@ -72,7 +72,7 @@ export const DetailScreen = () => {
         label="Detalle de Postres y Bebidas" 
         value={description} 
         onChangeText={setDescription} 
-        placeholder="Editar dulces..." 
+        placeholder="Editar postres y bebidas" 
         error={errorDesc}
         multiline 
       />

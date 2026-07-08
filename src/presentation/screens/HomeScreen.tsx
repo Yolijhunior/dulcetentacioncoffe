@@ -37,12 +37,21 @@ export const HomeScreen = () => {
     return theme.colors.status[value];
   };
 
+  const handleSelectOrder = (order: any) => {
+    if (state) {
+      (state as any).selectedOrderId = order.id;
+      (state as any)._currentOrderBackup = order;
+    }
+    dispatch({ type: 'SELECT_ORDER' as any, payload: order.id });
+    dispatch({ type: 'NAVIGATE', payload: { screen: 'DETAIL' } });
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View>
           <Text style={styles.brandTitle}>Dulce Tentación</Text>
-          <Text style={styles.subtitle}>Gestión de Pedidos</Text>
+          <Text style={styles.subtitle}>Panel de Monitoreo de Pedidos</Text>
         </View>
         <TouchableOpacity 
           style={styles.createButton} 
@@ -98,7 +107,9 @@ export const HomeScreen = () => {
         <FlatList
           data={filteredOrders}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <OrderCard item={item} />}
+          renderItem={({ item }) => (
+            <OrderCard order={item as any} onPress={() => handleSelectOrder(item)} />
+          )}
           ListEmptyComponent={
             <View style={styles.emptyContainer}>
               <Text style={styles.emptyText}>Ningún pedido coincide con la búsqueda. 🥧</Text>
