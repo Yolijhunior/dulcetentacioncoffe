@@ -92,7 +92,6 @@ Si prefiere levantar el servidor de desarrollo multiplataforma Metro lance el co
 - Celular Físico: Escanea el código QR que genera la consola desde tu cámara (iOS) o la app Expo Go (Android).
 - Emulador: Presiona la tecla a para Android o i para el simulador de iOS directamente en la terminal.
 
-### 4. Integrantes del Grupo:
+### 4. Integrantes del Grupo 13:
 - VALDIVIEZO ATERO JHUNIOR
 - ZURITA RIMAICUNA ABNER
-- YMA YOLI
